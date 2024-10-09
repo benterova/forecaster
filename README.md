@@ -2,7 +2,7 @@
 
 A basic application that allows users to enter their zip code, and get a forecast including the current temperature, high and low for a given date range.
 
-Forecasts are daily, and are stored in cache based on zip code for 30 minutes. There is an indicator when the forecast results are being pulled from cache.
+Forecasts are daily for a week-long range, and are stored in cache based on zip code for 30 minutes. There is an indicator when the forecast results are being pulled from cache.
 
 ## Introduction
 
@@ -14,6 +14,20 @@ Based on the requirements of this application, we don't need to interact with th
 - Requires Ruby 3.3.5
 
 First, create the file `master.key` in `app/config` and place `da5cd8aad01fe6e522908e43fc941977` within it. Run `bundle install` to install dependencies, then start the application with `bin/dev`.
+
+
+## Design Pattern
+
+**Backend**
+This application doesn't have a data model, as it simply requests and caches forecast information for a given zip code. We use a service, facade, presenter pattern to separate portions of the forecast integration for clarity.
+
+Put simply:
+- ForecastService is responsible for interaction with the Open-Meteo API to geocode and get the forecast.
+- ForecastFacade handles interacting with the cache or pulling from the ForecastService when needed, returning a ForecastResult to be used by our application
+- ForecastPresenter accepts a ForecastResult and readies data for the view
+
+**Front-End**
+There are only two routes for forecasts, `index` and `show`. The `show` route is used by Turbo to render the forecast partial, so there is no `.html.erb`. All of the interaction is handled through a form submission powered by Turbo. Javascript is imported via importmap.
 
 ## DEV NOTES
 
