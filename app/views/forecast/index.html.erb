@@ -1,0 +1,9 @@
+<div class="container mx-auto p-4">
+    <div class="mb-4" id="search">
+        <%= form_with url: forecast_path, method: :get, local: true, class: "flex", data: {turbo_frame: :forecast_results, turbo_stream: true} do |form| %>
+            <%= form.text_field :zip_code, placeholder: t("forecast.search_placeholder"), class: "flex-grow p-2 border rounded-l" %>
+            <%= form.submit t("forecast.search_button"), class: "p-2 bg-blue-500 text-white rounded-r" %>
+        <% end %>
+    </div>
+   <%= render "forecast_results" %>
+</div>

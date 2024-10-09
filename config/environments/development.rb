@@ -24,11 +24,11 @@ Rails.application.configure do
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
-    config.public_file_server.headers = { "Cache-Control" => "public, max-age=#{2.days.to_i}" }
+    config.public_file_server.headers = {"Cache-Control" => "public, max-age=#{2.days.to_i}"}
   else
     config.action_controller.perform_caching = false
 
-    config.cache_store = :null_store
+    config.cache_store = :memory_store
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
@@ -41,7 +41,7 @@ Rails.application.configure do
   # caching is enabled.
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.default_url_options = {host: "localhost", port: 3000}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

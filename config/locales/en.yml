@@ -15,7 +15,7 @@
 #     I18n.locale = :es
 #
 # This would use the information in config/locales/es.yml.
-#
+#r
 # To learn more about the API, please read the Rails Internationalization guide
 # at https://guides.rubyonrails.org/i18n.html.
 #
@@ -29,3 +29,12 @@
 
 en:
   hello: "Hello world"
+  forecast:
+    title: "Weather Forecast"
+    search_placeholder: "Enter a ZIP code"
+    search_button: "Search"
+    low: "Low: %{temperature}°C"
+    high: "High: %{temperature}°C"
+    from_cache: "Results from cache"
+    no_results: "No results found"
+    current_temperature: "Current temperature: %{temperature}°C"
